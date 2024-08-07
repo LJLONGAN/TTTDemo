@@ -1,6 +1,6 @@
 package Game;
 
-public class Demo {
+public class TTTDemo {
     public static void main(String[] args){
         GameBoard game = new GameBoard();
         game.getBoard();
