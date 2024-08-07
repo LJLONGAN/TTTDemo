@@ -2,6 +2,7 @@ package Game;
 
 import java.util.Scanner;
 
+@SuppressWarnings("ALL")
 public class GetData{
     static Scanner keyboard = new Scanner(System.in);
 
@@ -35,8 +36,7 @@ public class GetData{
     public static short getShort(){
         while(true){
             try{
-                short number = Short.parseShort(keyboard.nextLine());
-                return number;
+                return Short.parseShort(keyboard.nextLine());
             } catch(NumberFormatException e){
                 System.out.println(e);
             }//end try/catch
@@ -61,8 +61,7 @@ public class GetData{
     public static int getInt(){
         while(true){
             try{
-                int number = Integer.parseInt(keyboard.nextLine());
-                return number;
+                return Integer.parseInt(keyboard.nextLine());
             } catch(NumberFormatException e){
                 System.out.println(e);
             }//end try/catch
@@ -87,8 +86,7 @@ public class GetData{
     public static long getLong(){
         while(true){
             try{
-                long number = Long.parseLong(keyboard.nextLine());
-                return number;
+                return Long.parseLong(keyboard.nextLine());
             } catch(NumberFormatException e){
                 System.out.println(e);
             }//end try/catch
@@ -113,8 +111,7 @@ public class GetData{
     public static float getFloat(){
         while(true){
             try{
-                float number = Float.parseFloat(keyboard.nextLine());
-                return number;
+                return Float.parseFloat(keyboard.nextLine());
             } catch(NumberFormatException e){
                 System.out.println(e);
             }//end try/catch
@@ -139,8 +136,7 @@ public class GetData{
     public static double getDouble(){
         while(true){
             try{
-                double number = Double.parseDouble(keyboard.nextLine());
-                return number;
+                return Double.parseDouble(keyboard.nextLine());
             } catch(NumberFormatException e){
                 System.out.println(e);
             }//end try/catch

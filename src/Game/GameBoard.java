@@ -52,20 +52,20 @@ public class GameBoard {
             System.out.println("X's turn!");
             while(playerX){
                 System.out.print("Row: ");
-                int x = GetData.getInt(1,3);
+                int y = GetData.getInt(0,4);
                 System.out.print("Col: ");
-                int y = GetData.getInt(1,3);
-                setX(x,y);
+                int x = GetData.getInt(0,4);
+                setX(y,x);
                 playerX = !playerX;
             }//end
         } else {
             System.out.println("O's turn!");
             while(!playerX){
                 System.out.print("Row: ");
-                int x = GetData.getInt(1,3);
+                int y = GetData.getInt(0,4);
                 System.out.print("Col: ");
-                int y = GetData.getInt(1,3);
-                setO(x,y);
+                int x = GetData.getInt(0,4);
+                setO(y,x);
                 playerX = !playerX;
             }//end while
         }//end if/else
@@ -117,7 +117,6 @@ public class GameBoard {
         }//end nested for
         sort(gameArray);
         int cat = binarySearch(gameArray, ' ');
-        System.out.println(cat);
         if(cat == -1){
             winner = "Cat";
             System.out.println(winner + "'s GAME!");
