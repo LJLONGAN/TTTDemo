@@ -8,7 +8,7 @@ import static java.util.Arrays.sort;
 public class GameBoard {
     private final char[][] gameBoard;
     private boolean playerX;
-    private String winner = null;
+    private String winner;
 
     public GameBoard(){
         gameBoard = new char[][] {
@@ -23,6 +23,7 @@ public class GameBoard {
         } else {
             System.out.println("O goes first!");
         }//end if/else
+        winner = null;
     }//ctr
 
     public void getBoard(){
@@ -36,16 +37,26 @@ public class GameBoard {
     }//end getBoard
 
     public void setX(int y, int x){
+        //sets char X to array y, element x
         y--;
         x--;
         gameBoard[y][x] = 'X';
     }//end setX
 
     public void setO(int y, int x){
+        //sets char O to array y, element x
         y--;
         x--;
         gameBoard[y][x] = 'O';
     }//end setO
+
+    public boolean checkArray(int y, int x){
+        //checks gameBoard[y][x] if space is taken and returns true if open
+        y--;
+        x--;
+        char someChar = gameBoard[y][x];
+        return !(someChar == 'X' || someChar == 'O');
+    }//end checkArray
 
     public void gameLoop(){
         if(playerX){
@@ -55,8 +66,12 @@ public class GameBoard {
                 int y = GetData.getInt(0,4);
                 System.out.print("Col: ");
                 int x = GetData.getInt(0,4);
-                setX(y,x);
-                playerX = !playerX;
+                if(checkArray(y,x)) {
+                    setX(y, x);
+                    playerX = !playerX;
+                } else {
+                    System.out.println("Not a open space, please choose a different space.");
+                }//end if/else
             }//end
         } else {
             System.out.println("O's turn!");
@@ -65,8 +80,12 @@ public class GameBoard {
                 int y = GetData.getInt(0,4);
                 System.out.print("Col: ");
                 int x = GetData.getInt(0,4);
-                setO(y,x);
-                playerX = !playerX;
+                if(checkArray(y,x)) {
+                    setO(y, x);
+                    playerX = !playerX;
+                } else {
+                    System.out.println("Not a open space, please choose a different space.");
+                }//end if/else
             }//end while
         }//end if/else
         getBoard();
@@ -106,7 +125,7 @@ public class GameBoard {
                 }//end if
         }//end nested for
 
-        //checks each cat's game
+        //checks for cat's game
         char[] gameArray = new char[9];
         int k = 0;
         for(int y = 0; y < gameBoard.length; y++) {
@@ -122,7 +141,6 @@ public class GameBoard {
             System.out.println(winner + "'s GAME!");
             return false;
         }//end if
-
         return true;
     }//end getWinner
 }//end GameBoard
